@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>AR Museum</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+<body>
+
+  <!-- Map Button -->
+  <button id="mapBtn" class="icon-btn glass-btn top-left">
+    <i class="fa-solid fa-map"></i>
+  </button>
+
+  <!-- Language Dropdown -->
+  <select id="languageSwitcher" class="glass-dropdown top-right">
+    <option value="en">EN</option>
+    <option value="ph">PH</option>
+    <option value="zh">中文</option>
+    <option value="jp">日本語</option>
+  </select>
+
+  <!-- Bottom-Center Buttons: Camera + Video -->
+  <div class="bottom-center-group">
+    <button id="cameraBtn" class="icon-btn soft-glass">
+      <i class="fas fa-camera"></i>
+    </button>
+    <button id="videoBtn" class="icon-btn soft-glass">
+      <i class="fas fa-video"></i>
+    </button>
+  </div>
+
+  <!-- AR Scene -->
+  <a-scene embedded arjs="trackingMethod: best;" vr-mode-ui="enabled: false">
+
+  <!-- Marker 1 -->
+<a-marker type="pattern" url="marker/pattern-Golden_Image.patt" markerhandler="markerId: marker1">
+  <a-gltf-model src="models/Golden_Model.glb"
+                position="0 0 0"
+                scale="0.5 0.5 0.5"
+                visible="false">
+  </a-gltf-model>
+  <a-text id="marker1Text" value="Welcome" 
+          position="0 1 0" 
+          align="center" 
+          color="#21c78a" 
+          scale="2 2 2">
+  </a-text>
+  <a-sound id="marker1Sound" src="assets/sounds/Golden_Sounds.mp3" autoplay="false" position="0 0 0"></a-sound>
+</a-marker>
+
+<!-- Marker 2 -->
+<a-marker type="pattern" url="marker/pattern-Tara_Image.patt" markerhandler="markerId: marker2">
+  <a-gltf-model src="models/Tara_Model.glb"
+                position="0 0 0"
+                scale="0.5 0.5 0.5"
+                visible="false">
+  </a-gltf-model>
+  <a-text id="marker2Text" value="Greetings" 
+          position="0 1 0" 
+          align="center" 
+          color="#21c78a" 
+          scale="2 2 2">
+  </a-text>
+  <a-sound id="marker2Sound" src="assets/sounds/Tara_Sounds.mp3" autoplay="false" position="0 0 0"></a-sound>
+</a-marker>
+
+
+  <a-entity camera></a-entity>
+</a-scene>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
